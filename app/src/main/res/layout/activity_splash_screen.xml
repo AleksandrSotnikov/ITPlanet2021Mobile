@@ -4,13 +4,29 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#C61F1F"
+    android:background="#469380"
     tools:context=".SplashScreen">
 
-    <ImageView
-        android:id="@+id/imageView"
+    <pl.droidsonroids.gif.GifImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:scaleType="fitCenter"
-        app:srcCompat="@drawable/ic_launcher_foreground" />
+        android:layout_marginStart="128dp"
+        android:layout_marginTop="128dp"
+        android:layout_marginEnd="128dp"
+        android:layout_marginBottom="32dp"
+        android:background="#00469380"
+        android:scaleType="fitStart"
+        android:src="@drawable/loadinggif" />
+
+    <pl.droidsonroids.gif.GifImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="32dp"
+        android:background="#00469380"
+        android:scaleType="fitEnd"
+        android:src="@drawable/newsflashinggif" />
+
 </RelativeLayout>
