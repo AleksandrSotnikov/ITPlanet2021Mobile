@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Время новостей</string>
+    <string name="weatherApi">dbd3b02d8958d62185d02e944cd5f522</string>
 </resources>
