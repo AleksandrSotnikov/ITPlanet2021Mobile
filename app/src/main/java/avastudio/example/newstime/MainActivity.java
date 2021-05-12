@@ -1,36 +1,24 @@
 package avastudio.example.newstime;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
-
-import android.Manifest;
 import android.annotation.SuppressLint;
-import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
-import android.content.pm.PackageManager;
-import android.location.Location;
-import android.location.LocationListener;
-import android.location.LocationManager;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
-import android.webkit.WebView;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.gson.Gson;
 
 import java.util.ArrayList;
-import java.util.Date;
 
 import avastudio.example.newstime.api.ApiGeo;
 import avastudio.example.newstime.api.ApiWeather;
-import fr.arnaudguyon.xmltojsonlib.XmlToJson;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -42,6 +30,17 @@ public class MainActivity extends AppCompatActivity {
     private static TextView tvHumidity;
     private static ListView listView;
     private static ArrayList<String> arraySite;
+
+    private static void siteAdd() {
+        arraySite.add("ria.ru");
+        arraySite.add("lenta.ru");
+        arraySite.add("yandex.ru/news");
+        arraySite.add("iz.ru/news");
+        arraySite.add("www.vesti.ru");
+        arraySite.add("tass.ru");
+        arraySite.add("life.ru");
+        arraySite.add("www.newsru.com");
+    }
 
     @SuppressLint("UseCompatLoadingForDrawables")
     @Override
@@ -57,51 +56,51 @@ public class MainActivity extends AppCompatActivity {
         listView.setAdapter(adapter);
 
         Intent intent = getIntent();
-        ApiGeo apiGeo = new Gson().fromJson(intent.getStringExtra("geoPosition"),ApiGeo.class);
-        ApiWeather apiWeather = new Gson().fromJson(intent.getStringExtra("weather"),ApiWeather.class);
+        ApiGeo apiGeo = new Gson().fromJson(intent.getStringExtra("geoPosition"), ApiGeo.class);
+        ApiWeather apiWeather = new Gson().fromJson(intent.getStringExtra("weather"), ApiWeather.class);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View itemClicked, int position, long id) {
                 Intent intents = new Intent(MainActivity.this, WebActivity.class);
-                intents.putExtra("url",((TextView) itemClicked).getText());
-                intents.putExtra("geoPosition",intent.getStringExtra("geoPosition"));
+                intents.putExtra("url", ((TextView) itemClicked).getText());
+                intents.putExtra("geoPosition", intent.getStringExtra("geoPosition"));
                 MainActivity.this.startActivity(intents);
                 MainActivity.this.finish();
             }
         });
         ImageView image = findViewById(R.id.ivWeather);
-        switch (apiWeather.getWeather().get(0).getDescription()){
+        switch (apiWeather.getWeather().get(0).getDescription()) {
             case "clear sky":
-                    image.setImageDrawable(this.getResources().getDrawable(R.drawable.sun));
+                image.setImageDrawable(this.getResources().getDrawable(R.drawable.sun));
                 break;
             case "few clouds":
-                    image.setImageDrawable(this.getResources().getDrawable(R.drawable.cloudy_3));
+                image.setImageDrawable(this.getResources().getDrawable(R.drawable.cloudy_3));
                 break;
             case "scattered clouds":
-                    image.setImageDrawable(this.getResources().getDrawable(R.drawable.cloudy));
+                image.setImageDrawable(this.getResources().getDrawable(R.drawable.cloudy));
                 break;
             case "broken clouds":
-                    image.setImageDrawable(this.getResources().getDrawable(R.drawable.rain0));
+                image.setImageDrawable(this.getResources().getDrawable(R.drawable.rain0));
                 break;
             case "shower rain":
-                    image.setImageDrawable(this.getResources().getDrawable(R.drawable.rain1));
+                image.setImageDrawable(this.getResources().getDrawable(R.drawable.rain1));
                 break;
             case "rain":
-                    image.setImageDrawable(this.getResources().getDrawable(R.drawable.rain3));
+                image.setImageDrawable(this.getResources().getDrawable(R.drawable.rain3));
                 break;
             case "thunderstorm":
-                    image.setImageDrawable(this.getResources().getDrawable(R.drawable.storm));
+                image.setImageDrawable(this.getResources().getDrawable(R.drawable.storm));
                 break;
             case "snow":
-                    image.setImageDrawable(this.getResources().getDrawable(R.drawable.snow));
+                image.setImageDrawable(this.getResources().getDrawable(R.drawable.snow));
                 break;
             case "mist":
-                    image.setImageDrawable(this.getResources().getDrawable(R.drawable.fog));
+                image.setImageDrawable(this.getResources().getDrawable(R.drawable.fog));
                 break;
         }
         tvTemp = findViewById(R.id.tvTemp);
-        String temp = String.valueOf(apiWeather.getMain().getTemp()-273.15d);
-        tvTemp.setText("Температура: ".concat(temp.substring(0,temp.indexOf(".")+2)).concat("°С"));
+        String temp = String.valueOf(apiWeather.getMain().getTemp() - 273.15d);
+        tvTemp.setText("Температура: ".concat(temp.substring(0, temp.indexOf(".") + 2)).concat("°С"));
         tvClouds = findViewById(R.id.tvClouds);
         tvClouds.setText("Облачность: ".concat(String.valueOf(apiWeather.getClouds().getAll())).concat("%"));
         tvWind = findViewById(R.id.tvWind);
@@ -113,17 +112,6 @@ public class MainActivity extends AppCompatActivity {
         tvCourse = findViewById(R.id.tvCourse);
         tvCourse.append(apiGeo.getCity());
 
-    }
-
-    private static void siteAdd(){
-        arraySite.add("ria.ru");
-        arraySite.add("lenta.ru");
-        arraySite.add("yandex.ru/news");
-        arraySite.add("iz.ru/news");
-        arraySite.add("www.vesti.ru");
-        arraySite.add("tass.ru");
-        arraySite.add("life.ru");
-        arraySite.add("www.newsru.com");
     }
 
 

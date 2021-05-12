@@ -1,14 +1,30 @@
 package avastudio.example.newstime.api;
 
-import java.io.Serializable;
 import android.os.Parcelable;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class ApiGeo implements Serializable, Parcelable
-{
+import java.io.Serializable;
 
+public class ApiGeo implements Serializable, Parcelable {
+
+    public final static Creator<ApiGeo> CREATOR = new Creator<ApiGeo>() {
+
+
+        @SuppressWarnings({
+                "unchecked"
+        })
+        public ApiGeo createFromParcel(android.os.Parcel in) {
+            return new ApiGeo(in);
+        }
+
+        public ApiGeo[] newArray(int size) {
+            return (new ApiGeo[size]);
+        }
+
+    };
+    private final static long serialVersionUID = -3792911698130841281L;
     @SerializedName("ip")
     @Expose
     private String ip;
@@ -96,23 +112,6 @@ public class ApiGeo implements Serializable, Parcelable
     @SerializedName("completed_requests")
     @Expose
     private Long completedRequests;
-    public final static Creator<ApiGeo> CREATOR = new Creator<ApiGeo>() {
-
-
-        @SuppressWarnings({
-                "unchecked"
-        })
-        public ApiGeo createFromParcel(android.os.Parcel in) {
-            return new ApiGeo(in);
-        }
-
-        public ApiGeo[] newArray(int size) {
-            return (new ApiGeo[size]);
-        }
-
-    }
-            ;
-    private final static long serialVersionUID = -3792911698130841281L;
 
     protected ApiGeo(android.os.Parcel in) {
         this.ip = ((String) in.readValue((String.class.getClassLoader())));
@@ -148,13 +147,11 @@ public class ApiGeo implements Serializable, Parcelable
 
     /**
      * No args constructor for use in serialization
-     *
      */
     public ApiGeo() {
     }
 
     /**
-     *
      * @param continent
      * @param country
      * @param city
@@ -601,122 +598,122 @@ public class ApiGeo implements Serializable, Parcelable
         sb.append(ApiGeo.class.getName()).append('@').append(Integer.toHexString(System.identityHashCode(this))).append('[');
         sb.append("ip");
         sb.append('=');
-        sb.append(((this.ip == null)?"<null>":this.ip));
+        sb.append(((this.ip == null) ? "<null>" : this.ip));
         sb.append(',');
         sb.append("success");
         sb.append('=');
-        sb.append(((this.success == null)?"<null>":this.success));
+        sb.append(((this.success == null) ? "<null>" : this.success));
         sb.append(',');
         sb.append("type");
         sb.append('=');
-        sb.append(((this.type == null)?"<null>":this.type));
+        sb.append(((this.type == null) ? "<null>" : this.type));
         sb.append(',');
         sb.append("continent");
         sb.append('=');
-        sb.append(((this.continent == null)?"<null>":this.continent));
+        sb.append(((this.continent == null) ? "<null>" : this.continent));
         sb.append(',');
         sb.append("continentCode");
         sb.append('=');
-        sb.append(((this.continentCode == null)?"<null>":this.continentCode));
+        sb.append(((this.continentCode == null) ? "<null>" : this.continentCode));
         sb.append(',');
         sb.append("country");
         sb.append('=');
-        sb.append(((this.country == null)?"<null>":this.country));
+        sb.append(((this.country == null) ? "<null>" : this.country));
         sb.append(',');
         sb.append("countryCode");
         sb.append('=');
-        sb.append(((this.countryCode == null)?"<null>":this.countryCode));
+        sb.append(((this.countryCode == null) ? "<null>" : this.countryCode));
         sb.append(',');
         sb.append("countryFlag");
         sb.append('=');
-        sb.append(((this.countryFlag == null)?"<null>":this.countryFlag));
+        sb.append(((this.countryFlag == null) ? "<null>" : this.countryFlag));
         sb.append(',');
         sb.append("countryCapital");
         sb.append('=');
-        sb.append(((this.countryCapital == null)?"<null>":this.countryCapital));
+        sb.append(((this.countryCapital == null) ? "<null>" : this.countryCapital));
         sb.append(',');
         sb.append("countryPhone");
         sb.append('=');
-        sb.append(((this.countryPhone == null)?"<null>":this.countryPhone));
+        sb.append(((this.countryPhone == null) ? "<null>" : this.countryPhone));
         sb.append(',');
         sb.append("countryNeighbours");
         sb.append('=');
-        sb.append(((this.countryNeighbours == null)?"<null>":this.countryNeighbours));
+        sb.append(((this.countryNeighbours == null) ? "<null>" : this.countryNeighbours));
         sb.append(',');
         sb.append("region");
         sb.append('=');
-        sb.append(((this.region == null)?"<null>":this.region));
+        sb.append(((this.region == null) ? "<null>" : this.region));
         sb.append(',');
         sb.append("city");
         sb.append('=');
-        sb.append(((this.city == null)?"<null>":this.city));
+        sb.append(((this.city == null) ? "<null>" : this.city));
         sb.append(',');
         sb.append("latitude");
         sb.append('=');
-        sb.append(((this.latitude == null)?"<null>":this.latitude));
+        sb.append(((this.latitude == null) ? "<null>" : this.latitude));
         sb.append(',');
         sb.append("longitude");
         sb.append('=');
-        sb.append(((this.longitude == null)?"<null>":this.longitude));
+        sb.append(((this.longitude == null) ? "<null>" : this.longitude));
         sb.append(',');
         sb.append("asn");
         sb.append('=');
-        sb.append(((this.asn == null)?"<null>":this.asn));
+        sb.append(((this.asn == null) ? "<null>" : this.asn));
         sb.append(',');
         sb.append("org");
         sb.append('=');
-        sb.append(((this.org == null)?"<null>":this.org));
+        sb.append(((this.org == null) ? "<null>" : this.org));
         sb.append(',');
         sb.append("isp");
         sb.append('=');
-        sb.append(((this.isp == null)?"<null>":this.isp));
+        sb.append(((this.isp == null) ? "<null>" : this.isp));
         sb.append(',');
         sb.append("timezone");
         sb.append('=');
-        sb.append(((this.timezone == null)?"<null>":this.timezone));
+        sb.append(((this.timezone == null) ? "<null>" : this.timezone));
         sb.append(',');
         sb.append("timezoneName");
         sb.append('=');
-        sb.append(((this.timezoneName == null)?"<null>":this.timezoneName));
+        sb.append(((this.timezoneName == null) ? "<null>" : this.timezoneName));
         sb.append(',');
         sb.append("timezoneDstOffset");
         sb.append('=');
-        sb.append(((this.timezoneDstOffset == null)?"<null>":this.timezoneDstOffset));
+        sb.append(((this.timezoneDstOffset == null) ? "<null>" : this.timezoneDstOffset));
         sb.append(',');
         sb.append("timezoneGmtOffset");
         sb.append('=');
-        sb.append(((this.timezoneGmtOffset == null)?"<null>":this.timezoneGmtOffset));
+        sb.append(((this.timezoneGmtOffset == null) ? "<null>" : this.timezoneGmtOffset));
         sb.append(',');
         sb.append("timezoneGmt");
         sb.append('=');
-        sb.append(((this.timezoneGmt == null)?"<null>":this.timezoneGmt));
+        sb.append(((this.timezoneGmt == null) ? "<null>" : this.timezoneGmt));
         sb.append(',');
         sb.append("currency");
         sb.append('=');
-        sb.append(((this.currency == null)?"<null>":this.currency));
+        sb.append(((this.currency == null) ? "<null>" : this.currency));
         sb.append(',');
         sb.append("currencyCode");
         sb.append('=');
-        sb.append(((this.currencyCode == null)?"<null>":this.currencyCode));
+        sb.append(((this.currencyCode == null) ? "<null>" : this.currencyCode));
         sb.append(',');
         sb.append("currencySymbol");
         sb.append('=');
-        sb.append(((this.currencySymbol == null)?"<null>":this.currencySymbol));
+        sb.append(((this.currencySymbol == null) ? "<null>" : this.currencySymbol));
         sb.append(',');
         sb.append("currencyRates");
         sb.append('=');
-        sb.append(((this.currencyRates == null)?"<null>":this.currencyRates));
+        sb.append(((this.currencyRates == null) ? "<null>" : this.currencyRates));
         sb.append(',');
         sb.append("currencyPlural");
         sb.append('=');
-        sb.append(((this.currencyPlural == null)?"<null>":this.currencyPlural));
+        sb.append(((this.currencyPlural == null) ? "<null>" : this.currencyPlural));
         sb.append(',');
         sb.append("completedRequests");
         sb.append('=');
-        sb.append(((this.completedRequests == null)?"<null>":this.completedRequests));
+        sb.append(((this.completedRequests == null) ? "<null>" : this.completedRequests));
         sb.append(',');
-        if (sb.charAt((sb.length()- 1)) == ',') {
-            sb.setCharAt((sb.length()- 1), ']');
+        if (sb.charAt((sb.length() - 1)) == ',') {
+            sb.setCharAt((sb.length() - 1), ']');
         } else {
             sb.append(']');
         }
@@ -726,35 +723,35 @@ public class ApiGeo implements Serializable, Parcelable
     @Override
     public int hashCode() {
         int result = 1;
-        result = ((result* 31)+((this.continent == null)? 0 :this.continent.hashCode()));
-        result = ((result* 31)+((this.country == null)? 0 :this.country.hashCode()));
-        result = ((result* 31)+((this.city == null)? 0 :this.city.hashCode()));
-        result = ((result* 31)+((this.timezone == null)? 0 :this.timezone.hashCode()));
-        result = ((result* 31)+((this.latitude == null)? 0 :this.latitude.hashCode()));
-        result = ((result* 31)+((this.isp == null)? 0 :this.isp.hashCode()));
-        result = ((result* 31)+((this.type == null)? 0 :this.type.hashCode()));
-        result = ((result* 31)+((this.timezoneDstOffset == null)? 0 :this.timezoneDstOffset.hashCode()));
-        result = ((result* 31)+((this.timezoneGmt == null)? 0 :this.timezoneGmt.hashCode()));
-        result = ((result* 31)+((this.countryPhone == null)? 0 :this.countryPhone.hashCode()));
-        result = ((result* 31)+((this.countryFlag == null)? 0 :this.countryFlag.hashCode()));
-        result = ((result* 31)+((this.countryCode == null)? 0 :this.countryCode.hashCode()));
-        result = ((result* 31)+((this.currency == null)? 0 :this.currency.hashCode()));
-        result = ((result* 31)+((this.continentCode == null)? 0 :this.continentCode.hashCode()));
-        result = ((result* 31)+((this.longitude == null)? 0 :this.longitude.hashCode()));
-        result = ((result* 31)+((this.currencyRates == null)? 0 :this.currencyRates.hashCode()));
-        result = ((result* 31)+((this.org == null)? 0 :this.org.hashCode()));
-        result = ((result* 31)+((this.ip == null)? 0 :this.ip.hashCode()));
-        result = ((result* 31)+((this.currencySymbol == null)? 0 :this.currencySymbol.hashCode()));
-        result = ((result* 31)+((this.countryNeighbours == null)? 0 :this.countryNeighbours.hashCode()));
-        result = ((result* 31)+((this.countryCapital == null)? 0 :this.countryCapital.hashCode()));
-        result = ((result* 31)+((this.completedRequests == null)? 0 :this.completedRequests.hashCode()));
-        result = ((result* 31)+((this.timezoneGmtOffset == null)? 0 :this.timezoneGmtOffset.hashCode()));
-        result = ((result* 31)+((this.success == null)? 0 :this.success.hashCode()));
-        result = ((result* 31)+((this.timezoneName == null)? 0 :this.timezoneName.hashCode()));
-        result = ((result* 31)+((this.currencyPlural == null)? 0 :this.currencyPlural.hashCode()));
-        result = ((result* 31)+((this.region == null)? 0 :this.region.hashCode()));
-        result = ((result* 31)+((this.asn == null)? 0 :this.asn.hashCode()));
-        result = ((result* 31)+((this.currencyCode == null)? 0 :this.currencyCode.hashCode()));
+        result = ((result * 31) + ((this.continent == null) ? 0 : this.continent.hashCode()));
+        result = ((result * 31) + ((this.country == null) ? 0 : this.country.hashCode()));
+        result = ((result * 31) + ((this.city == null) ? 0 : this.city.hashCode()));
+        result = ((result * 31) + ((this.timezone == null) ? 0 : this.timezone.hashCode()));
+        result = ((result * 31) + ((this.latitude == null) ? 0 : this.latitude.hashCode()));
+        result = ((result * 31) + ((this.isp == null) ? 0 : this.isp.hashCode()));
+        result = ((result * 31) + ((this.type == null) ? 0 : this.type.hashCode()));
+        result = ((result * 31) + ((this.timezoneDstOffset == null) ? 0 : this.timezoneDstOffset.hashCode()));
+        result = ((result * 31) + ((this.timezoneGmt == null) ? 0 : this.timezoneGmt.hashCode()));
+        result = ((result * 31) + ((this.countryPhone == null) ? 0 : this.countryPhone.hashCode()));
+        result = ((result * 31) + ((this.countryFlag == null) ? 0 : this.countryFlag.hashCode()));
+        result = ((result * 31) + ((this.countryCode == null) ? 0 : this.countryCode.hashCode()));
+        result = ((result * 31) + ((this.currency == null) ? 0 : this.currency.hashCode()));
+        result = ((result * 31) + ((this.continentCode == null) ? 0 : this.continentCode.hashCode()));
+        result = ((result * 31) + ((this.longitude == null) ? 0 : this.longitude.hashCode()));
+        result = ((result * 31) + ((this.currencyRates == null) ? 0 : this.currencyRates.hashCode()));
+        result = ((result * 31) + ((this.org == null) ? 0 : this.org.hashCode()));
+        result = ((result * 31) + ((this.ip == null) ? 0 : this.ip.hashCode()));
+        result = ((result * 31) + ((this.currencySymbol == null) ? 0 : this.currencySymbol.hashCode()));
+        result = ((result * 31) + ((this.countryNeighbours == null) ? 0 : this.countryNeighbours.hashCode()));
+        result = ((result * 31) + ((this.countryCapital == null) ? 0 : this.countryCapital.hashCode()));
+        result = ((result * 31) + ((this.completedRequests == null) ? 0 : this.completedRequests.hashCode()));
+        result = ((result * 31) + ((this.timezoneGmtOffset == null) ? 0 : this.timezoneGmtOffset.hashCode()));
+        result = ((result * 31) + ((this.success == null) ? 0 : this.success.hashCode()));
+        result = ((result * 31) + ((this.timezoneName == null) ? 0 : this.timezoneName.hashCode()));
+        result = ((result * 31) + ((this.currencyPlural == null) ? 0 : this.currencyPlural.hashCode()));
+        result = ((result * 31) + ((this.region == null) ? 0 : this.region.hashCode()));
+        result = ((result * 31) + ((this.asn == null) ? 0 : this.asn.hashCode()));
+        result = ((result * 31) + ((this.currencyCode == null) ? 0 : this.currencyCode.hashCode()));
         return result;
     }
 
@@ -767,7 +764,7 @@ public class ApiGeo implements Serializable, Parcelable
             return false;
         }
         ApiGeo rhs = ((ApiGeo) other);
-        return ((((((((((((((((((((((((((((((this.continent == rhs.continent)||((this.continent!= null)&&this.continent.equals(rhs.continent)))&&((this.country == rhs.country)||((this.country!= null)&&this.country.equals(rhs.country))))&&((this.city == rhs.city)||((this.city!= null)&&this.city.equals(rhs.city))))&&((this.timezone == rhs.timezone)||((this.timezone!= null)&&this.timezone.equals(rhs.timezone))))&&((this.latitude == rhs.latitude)||((this.latitude!= null)&&this.latitude.equals(rhs.latitude))))&&((this.isp == rhs.isp)||((this.isp!= null)&&this.isp.equals(rhs.isp))))&&((this.type == rhs.type)||((this.type!= null)&&this.type.equals(rhs.type))))&&((this.timezoneDstOffset == rhs.timezoneDstOffset)||((this.timezoneDstOffset!= null)&&this.timezoneDstOffset.equals(rhs.timezoneDstOffset))))&&((this.timezoneGmt == rhs.timezoneGmt)||((this.timezoneGmt!= null)&&this.timezoneGmt.equals(rhs.timezoneGmt))))&&((this.countryPhone == rhs.countryPhone)||((this.countryPhone!= null)&&this.countryPhone.equals(rhs.countryPhone))))&&((this.countryFlag == rhs.countryFlag)||((this.countryFlag!= null)&&this.countryFlag.equals(rhs.countryFlag))))&&((this.countryCode == rhs.countryCode)||((this.countryCode!= null)&&this.countryCode.equals(rhs.countryCode))))&&((this.currency == rhs.currency)||((this.currency!= null)&&this.currency.equals(rhs.currency))))&&((this.continentCode == rhs.continentCode)||((this.continentCode!= null)&&this.continentCode.equals(rhs.continentCode))))&&((this.longitude == rhs.longitude)||((this.longitude!= null)&&this.longitude.equals(rhs.longitude))))&&((this.currencyRates == rhs.currencyRates)||((this.currencyRates!= null)&&this.currencyRates.equals(rhs.currencyRates))))&&((this.org == rhs.org)||((this.org!= null)&&this.org.equals(rhs.org))))&&((this.ip == rhs.ip)||((this.ip!= null)&&this.ip.equals(rhs.ip))))&&((this.currencySymbol == rhs.currencySymbol)||((this.currencySymbol!= null)&&this.currencySymbol.equals(rhs.currencySymbol))))&&((this.countryNeighbours == rhs.countryNeighbours)||((this.countryNeighbours!= null)&&this.countryNeighbours.equals(rhs.countryNeighbours))))&&((this.countryCapital == rhs.countryCapital)||((this.countryCapital!= null)&&this.countryCapital.equals(rhs.countryCapital))))&&((this.completedRequests == rhs.completedRequests)||((this.completedRequests!= null)&&this.completedRequests.equals(rhs.completedRequests))))&&((this.timezoneGmtOffset == rhs.timezoneGmtOffset)||((this.timezoneGmtOffset!= null)&&this.timezoneGmtOffset.equals(rhs.timezoneGmtOffset))))&&((this.success == rhs.success)||((this.success!= null)&&this.success.equals(rhs.success))))&&((this.timezoneName == rhs.timezoneName)||((this.timezoneName!= null)&&this.timezoneName.equals(rhs.timezoneName))))&&((this.currencyPlural == rhs.currencyPlural)||((this.currencyPlural!= null)&&this.currencyPlural.equals(rhs.currencyPlural))))&&((this.region == rhs.region)||((this.region!= null)&&this.region.equals(rhs.region))))&&((this.asn == rhs.asn)||((this.asn!= null)&&this.asn.equals(rhs.asn))))&&((this.currencyCode == rhs.currencyCode)||((this.currencyCode!= null)&&this.currencyCode.equals(rhs.currencyCode))));
+        return ((((((((((((((((((((((((((((((this.continent == rhs.continent) || ((this.continent != null) && this.continent.equals(rhs.continent))) && ((this.country == rhs.country) || ((this.country != null) && this.country.equals(rhs.country)))) && ((this.city == rhs.city) || ((this.city != null) && this.city.equals(rhs.city)))) && ((this.timezone == rhs.timezone) || ((this.timezone != null) && this.timezone.equals(rhs.timezone)))) && ((this.latitude == rhs.latitude) || ((this.latitude != null) && this.latitude.equals(rhs.latitude)))) && ((this.isp == rhs.isp) || ((this.isp != null) && this.isp.equals(rhs.isp)))) && ((this.type == rhs.type) || ((this.type != null) && this.type.equals(rhs.type)))) && ((this.timezoneDstOffset == rhs.timezoneDstOffset) || ((this.timezoneDstOffset != null) && this.timezoneDstOffset.equals(rhs.timezoneDstOffset)))) && ((this.timezoneGmt == rhs.timezoneGmt) || ((this.timezoneGmt != null) && this.timezoneGmt.equals(rhs.timezoneGmt)))) && ((this.countryPhone == rhs.countryPhone) || ((this.countryPhone != null) && this.countryPhone.equals(rhs.countryPhone)))) && ((this.countryFlag == rhs.countryFlag) || ((this.countryFlag != null) && this.countryFlag.equals(rhs.countryFlag)))) && ((this.countryCode == rhs.countryCode) || ((this.countryCode != null) && this.countryCode.equals(rhs.countryCode)))) && ((this.currency == rhs.currency) || ((this.currency != null) && this.currency.equals(rhs.currency)))) && ((this.continentCode == rhs.continentCode) || ((this.continentCode != null) && this.continentCode.equals(rhs.continentCode)))) && ((this.longitude == rhs.longitude) || ((this.longitude != null) && this.longitude.equals(rhs.longitude)))) && ((this.currencyRates == rhs.currencyRates) || ((this.currencyRates != null) && this.currencyRates.equals(rhs.currencyRates)))) && ((this.org == rhs.org) || ((this.org != null) && this.org.equals(rhs.org)))) && ((this.ip == rhs.ip) || ((this.ip != null) && this.ip.equals(rhs.ip)))) && ((this.currencySymbol == rhs.currencySymbol) || ((this.currencySymbol != null) && this.currencySymbol.equals(rhs.currencySymbol)))) && ((this.countryNeighbours == rhs.countryNeighbours) || ((this.countryNeighbours != null) && this.countryNeighbours.equals(rhs.countryNeighbours)))) && ((this.countryCapital == rhs.countryCapital) || ((this.countryCapital != null) && this.countryCapital.equals(rhs.countryCapital)))) && ((this.completedRequests == rhs.completedRequests) || ((this.completedRequests != null) && this.completedRequests.equals(rhs.completedRequests)))) && ((this.timezoneGmtOffset == rhs.timezoneGmtOffset) || ((this.timezoneGmtOffset != null) && this.timezoneGmtOffset.equals(rhs.timezoneGmtOffset)))) && ((this.success == rhs.success) || ((this.success != null) && this.success.equals(rhs.success)))) && ((this.timezoneName == rhs.timezoneName) || ((this.timezoneName != null) && this.timezoneName.equals(rhs.timezoneName)))) && ((this.currencyPlural == rhs.currencyPlural) || ((this.currencyPlural != null) && this.currencyPlural.equals(rhs.currencyPlural)))) && ((this.region == rhs.region) || ((this.region != null) && this.region.equals(rhs.region)))) && ((this.asn == rhs.asn) || ((this.asn != null) && this.asn.equals(rhs.asn)))) && ((this.currencyCode == rhs.currencyCode) || ((this.currencyCode != null) && this.currencyCode.equals(rhs.currencyCode))));
     }
 
     public void writeToParcel(android.os.Parcel dest, int flags) {

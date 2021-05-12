@@ -1,4 +1,3 @@
-
 package avastudio.example.newstime.api;
 
 import com.google.gson.annotations.Expose;
@@ -15,13 +14,11 @@ public class Coord {
 
     /**
      * No args constructor for use in serialization
-     * 
      */
     public Coord() {
     }
 
     /**
-     * 
      * @param lon
      * @param lat
      */
@@ -63,14 +60,14 @@ public class Coord {
         sb.append(Coord.class.getName()).append('@').append(Integer.toHexString(System.identityHashCode(this))).append('[');
         sb.append("lon");
         sb.append('=');
-        sb.append(((this.lon == null)?"<null>":this.lon));
+        sb.append(((this.lon == null) ? "<null>" : this.lon));
         sb.append(',');
         sb.append("lat");
         sb.append('=');
-        sb.append(((this.lat == null)?"<null>":this.lat));
+        sb.append(((this.lat == null) ? "<null>" : this.lat));
         sb.append(',');
-        if (sb.charAt((sb.length()- 1)) == ',') {
-            sb.setCharAt((sb.length()- 1), ']');
+        if (sb.charAt((sb.length() - 1)) == ',') {
+            sb.setCharAt((sb.length() - 1), ']');
         } else {
             sb.append(']');
         }
@@ -80,8 +77,8 @@ public class Coord {
     @Override
     public int hashCode() {
         int result = 1;
-        result = ((result* 31)+((this.lon == null)? 0 :this.lon.hashCode()));
-        result = ((result* 31)+((this.lat == null)? 0 :this.lat.hashCode()));
+        result = ((result * 31) + ((this.lon == null) ? 0 : this.lon.hashCode()));
+        result = ((result * 31) + ((this.lat == null) ? 0 : this.lat.hashCode()));
         return result;
     }
 
@@ -94,7 +91,7 @@ public class Coord {
             return false;
         }
         Coord rhs = ((Coord) other);
-        return (((this.lon == rhs.lon)||((this.lon!= null)&&this.lon.equals(rhs.lon)))&&((this.lat == rhs.lat)||((this.lat!= null)&&this.lat.equals(rhs.lat))));
+        return (((this.lon == rhs.lon) || ((this.lon != null) && this.lon.equals(rhs.lon))) && ((this.lat == rhs.lat) || ((this.lat != null) && this.lat.equals(rhs.lat))));
     }
 
 }

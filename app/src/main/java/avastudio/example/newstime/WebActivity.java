@@ -1,7 +1,5 @@
 package avastudio.example.newstime;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.annotation.TargetApi;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
@@ -13,10 +11,13 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Button;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 public class WebActivity extends AppCompatActivity {
 
     private static WebView webView;
     private static Button btnBack;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,7 +31,7 @@ public class WebActivity extends AppCompatActivity {
         webView.loadUrl(intent.getStringExtra("url"));
     }
 
-    public void onClickBackMain(View view){
+    public void onClickBackMain(View view) {
         WebActivity.this.startActivity(new Intent(WebActivity.this, SplashScreen.class));
         WebActivity.this.finish();
     }

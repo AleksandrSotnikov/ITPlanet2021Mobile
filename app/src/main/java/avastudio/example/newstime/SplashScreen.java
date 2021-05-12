@@ -1,17 +1,15 @@
 package avastudio.example.newstime;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
-import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
-import android.util.Log;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.gson.Gson;
 
@@ -21,7 +19,6 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
-import java.net.NetworkInterface;
 import java.net.URL;
 
 import avastudio.example.newstime.api.ApiGeo;
@@ -33,15 +30,32 @@ public class SplashScreen extends AppCompatActivity {
     private String geo = "";
     private String weather = "error";
 
+    public static boolean hasConnection(final Context context) {
+        ConnectivityManager cm = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo wifiInfo = cm.getNetworkInfo(ConnectivityManager.TYPE_WIFI);
+        if (wifiInfo != null && wifiInfo.isConnected()) {
+            return true;
+        }
+        wifiInfo = cm.getNetworkInfo(ConnectivityManager.TYPE_MOBILE);
+        if (wifiInfo != null && wifiInfo.isConnected()) {
+            return true;
+        }
+        wifiInfo = cm.getActiveNetworkInfo();
+        if (wifiInfo != null && wifiInfo.isConnected()) {
+            return true;
+        }
+        return false;
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash_screen);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-        if(hasConnection(SplashScreen.this)){
+        if (hasConnection(SplashScreen.this)) {
             AsyncApiIpChecker asyncApiIpChecker = new AsyncApiIpChecker();
             asyncApiIpChecker.execute();
-        }else{
+        } else {
             new Handler().postDelayed(new Runnable() {
                 @Override
                 public void run() {
@@ -51,26 +65,6 @@ public class SplashScreen extends AppCompatActivity {
             }, 2000);
 
         }
-    }
-    public static boolean hasConnection(final Context context)
-    {
-        ConnectivityManager cm = (ConnectivityManager)context.getSystemService(Context.CONNECTIVITY_SERVICE);
-        NetworkInfo wifiInfo = cm.getNetworkInfo(ConnectivityManager.TYPE_WIFI);
-        if (wifiInfo != null && wifiInfo.isConnected())
-        {
-            return true;
-        }
-        wifiInfo = cm.getNetworkInfo(ConnectivityManager.TYPE_MOBILE);
-        if (wifiInfo != null && wifiInfo.isConnected())
-        {
-            return true;
-        }
-        wifiInfo = cm.getActiveNetworkInfo();
-        if (wifiInfo != null && wifiInfo.isConnected())
-        {
-            return true;
-        }
-        return false;
     }
 
     private class AsyncApiIpChecker extends AsyncTask<String, Void, String> {
@@ -87,8 +81,8 @@ public class SplashScreen extends AppCompatActivity {
                 InputStream inputHttpIp = HttpIp.getInputStream();
                 BufferedReader reader = new BufferedReader(new InputStreamReader(inputHttpIp));
                 myip = reader.readLine();
-                myip = myip.substring(myip.indexOf("Current IP Address:")+20);
-                myip = myip.substring(0,myip.indexOf("</body>"));
+                myip = myip.substring(myip.indexOf("Current IP Address:") + 20);
+                myip = myip.substring(0, myip.indexOf("</body>"));
                 urlGeoPosition.concat(myip);
             } catch (MalformedURLException e) {
                 e.printStackTrace();
@@ -125,7 +119,7 @@ public class SplashScreen extends AppCompatActivity {
         @Override
         protected String doInBackground(String... strings) {
             String urlWeatherString = "http://api.openweathermap.org/data/2.5/weather?";
-            ApiGeo apiGeo = new Gson().fromJson(geo,ApiGeo.class);
+            ApiGeo apiGeo = new Gson().fromJson(geo, ApiGeo.class);
             String ss = "";
             urlWeatherString = urlWeatherString.concat("lat=").concat(apiGeo.getLatitude()).concat("&lon=").concat(apiGeo.getLongitude()).concat("&appid=").concat(getBaseContext().getString(R.string.weatherApi));
             try {
@@ -147,7 +141,7 @@ public class SplashScreen extends AppCompatActivity {
             super.onPostExecute(s);
             weather = s;
             Intent intent = new Intent(SplashScreen.this, MainActivity.class);
-            intent.putExtra("geoPosition",geo);
+            intent.putExtra("geoPosition", geo);
             intent.putExtra("weather", weather);
             SplashScreen.this.startActivity(intent);
             SplashScreen.this.finish();

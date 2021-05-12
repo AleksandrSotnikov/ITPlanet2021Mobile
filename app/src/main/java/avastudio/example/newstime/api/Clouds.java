@@ -1,4 +1,3 @@
-
 package avastudio.example.newstime.api;
 
 import com.google.gson.annotations.Expose;
@@ -12,13 +11,11 @@ public class Clouds {
 
     /**
      * No args constructor for use in serialization
-     * 
      */
     public Clouds() {
     }
 
     /**
-     * 
      * @param all
      */
     public Clouds(Integer all) {
@@ -45,10 +42,10 @@ public class Clouds {
         sb.append(Clouds.class.getName()).append('@').append(Integer.toHexString(System.identityHashCode(this))).append('[');
         sb.append("all");
         sb.append('=');
-        sb.append(((this.all == null)?"<null>":this.all));
+        sb.append(((this.all == null) ? "<null>" : this.all));
         sb.append(',');
-        if (sb.charAt((sb.length()- 1)) == ',') {
-            sb.setCharAt((sb.length()- 1), ']');
+        if (sb.charAt((sb.length() - 1)) == ',') {
+            sb.setCharAt((sb.length() - 1), ']');
         } else {
             sb.append(']');
         }
@@ -58,7 +55,7 @@ public class Clouds {
     @Override
     public int hashCode() {
         int result = 1;
-        result = ((result* 31)+((this.all == null)? 0 :this.all.hashCode()));
+        result = ((result * 31) + ((this.all == null) ? 0 : this.all.hashCode()));
         return result;
     }
 
@@ -71,7 +68,7 @@ public class Clouds {
             return false;
         }
         Clouds rhs = ((Clouds) other);
-        return ((this.all == rhs.all)||((this.all!= null)&&this.all.equals(rhs.all)));
+        return ((this.all == rhs.all) || ((this.all != null) && this.all.equals(rhs.all)));
     }
 
 }
