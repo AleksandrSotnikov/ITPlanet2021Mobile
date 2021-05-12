@@ -1,3 +1,4 @@
+
 package avastudio.example.newstime.api;
 
 import com.google.gson.annotations.Expose;
@@ -14,11 +15,13 @@ public class Coord {
 
     /**
      * No args constructor for use in serialization
+     *
      */
     public Coord() {
     }
 
     /**
+     *
      * @param lon
      * @param lat
      */

@@ -1,3 +1,4 @@
+
 package avastudio.example.newstime.api;
 
 import com.google.gson.annotations.Expose;
@@ -23,11 +24,13 @@ public class Sys {
 
     /**
      * No args constructor for use in serialization
+     *
      */
     public Sys() {
     }
 
     /**
+     *
      * @param country
      * @param sunrise
      * @param sunset

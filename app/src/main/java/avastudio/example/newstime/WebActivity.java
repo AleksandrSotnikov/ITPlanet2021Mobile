@@ -1,5 +1,6 @@
 package avastudio.example.newstime;
 
+import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
@@ -9,22 +10,19 @@ import android.view.View;
 import android.webkit.WebResourceRequest;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
-import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 public class WebActivity extends AppCompatActivity {
 
     private static WebView webView;
-    private static Button btnBack;
-
+    @SuppressLint("SetJavaScriptEnabled")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_web);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         webView = findViewById(R.id.WebView);
-        btnBack = findViewById(R.id.btnBack);
         Intent intent = getIntent();
         webView.getSettings().setJavaScriptEnabled(true);
         webView.setWebViewClient(new MyWebViewClient());

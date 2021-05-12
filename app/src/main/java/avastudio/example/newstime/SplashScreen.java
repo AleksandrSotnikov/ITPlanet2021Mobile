@@ -25,27 +25,8 @@ import avastudio.example.newstime.api.ApiGeo;
 
 public class SplashScreen extends AppCompatActivity {
 
-    private final int SPLASH_DISPLAY_LENGHT = 4000;
-    private final int WEATHER_LENGHT = 800;
     private String geo = "";
     private String weather = "error";
-
-    public static boolean hasConnection(final Context context) {
-        ConnectivityManager cm = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
-        NetworkInfo wifiInfo = cm.getNetworkInfo(ConnectivityManager.TYPE_WIFI);
-        if (wifiInfo != null && wifiInfo.isConnected()) {
-            return true;
-        }
-        wifiInfo = cm.getNetworkInfo(ConnectivityManager.TYPE_MOBILE);
-        if (wifiInfo != null && wifiInfo.isConnected()) {
-            return true;
-        }
-        wifiInfo = cm.getActiveNetworkInfo();
-        if (wifiInfo != null && wifiInfo.isConnected()) {
-            return true;
-        }
-        return false;
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,6 +46,23 @@ public class SplashScreen extends AppCompatActivity {
             }, 2000);
 
         }
+    }
+
+    public static boolean hasConnection(final Context context) {
+        ConnectivityManager cm = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo wifiInfo = cm.getNetworkInfo(ConnectivityManager.TYPE_WIFI);
+        if (wifiInfo != null && wifiInfo.isConnected()) {
+            return true;
+        }
+        wifiInfo = cm.getNetworkInfo(ConnectivityManager.TYPE_MOBILE);
+        if (wifiInfo != null && wifiInfo.isConnected()) {
+            return true;
+        }
+        wifiInfo = cm.getActiveNetworkInfo();
+        if (wifiInfo != null && wifiInfo.isConnected()) {
+            return true;
+        }
+        return false;
     }
 
     private class AsyncApiIpChecker extends AsyncTask<String, Void, String> {
@@ -120,7 +118,6 @@ public class SplashScreen extends AppCompatActivity {
         protected String doInBackground(String... strings) {
             String urlWeatherString = "http://api.openweathermap.org/data/2.5/weather?";
             ApiGeo apiGeo = new Gson().fromJson(geo, ApiGeo.class);
-            String ss = "";
             urlWeatherString = urlWeatherString.concat("lat=").concat(apiGeo.getLatitude()).concat("&lon=").concat(apiGeo.getLongitude()).concat("&appid=").concat(getBaseContext().getString(R.string.weatherApi));
             try {
                 URL urlIP = new URL(urlWeatherString);

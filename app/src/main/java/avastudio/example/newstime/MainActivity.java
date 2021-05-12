@@ -31,17 +31,6 @@ public class MainActivity extends AppCompatActivity {
     private static ListView listView;
     private static ArrayList<String> arraySite;
 
-    private static void siteAdd() {
-        arraySite.add("ria.ru");
-        arraySite.add("lenta.ru");
-        arraySite.add("yandex.ru/news");
-        arraySite.add("iz.ru/news");
-        arraySite.add("www.vesti.ru");
-        arraySite.add("tass.ru");
-        arraySite.add("life.ru");
-        arraySite.add("www.newsru.com");
-    }
-
     @SuppressLint("UseCompatLoadingForDrawables")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -112,6 +101,17 @@ public class MainActivity extends AppCompatActivity {
         tvCourse = findViewById(R.id.tvCourse);
         tvCourse.append(apiGeo.getCity());
 
+    }
+
+    private static void siteAdd() {
+        arraySite.add("ria.ru");
+        arraySite.add("lenta.ru");
+        arraySite.add("yandex.ru/news");
+        arraySite.add("iz.ru/news");
+        arraySite.add("www.vesti.ru");
+        arraySite.add("tass.ru");
+        arraySite.add("life.ru");
+        arraySite.add("www.newsru.com");
     }
 
 

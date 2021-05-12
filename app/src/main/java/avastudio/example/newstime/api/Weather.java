@@ -1,3 +1,4 @@
+
 package avastudio.example.newstime.api;
 
 import com.google.gson.annotations.Expose;
@@ -20,11 +21,13 @@ public class Weather {
 
     /**
      * No args constructor for use in serialization
+     *
      */
     public Weather() {
     }
 
     /**
+     *
      * @param icon
      * @param description
      * @param main

@@ -1,3 +1,4 @@
+
 package avastudio.example.newstime.api;
 
 import com.google.gson.annotations.Expose;
@@ -11,11 +12,13 @@ public class Clouds {
 
     /**
      * No args constructor for use in serialization
+     *
      */
     public Clouds() {
     }
 
     /**
+     *
      * @param all
      */
     public Clouds(Integer all) {

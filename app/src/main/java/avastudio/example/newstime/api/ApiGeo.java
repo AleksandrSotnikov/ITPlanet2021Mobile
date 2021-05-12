@@ -9,22 +9,6 @@ import java.io.Serializable;
 
 public class ApiGeo implements Serializable, Parcelable {
 
-    public final static Creator<ApiGeo> CREATOR = new Creator<ApiGeo>() {
-
-
-        @SuppressWarnings({
-                "unchecked"
-        })
-        public ApiGeo createFromParcel(android.os.Parcel in) {
-            return new ApiGeo(in);
-        }
-
-        public ApiGeo[] newArray(int size) {
-            return (new ApiGeo[size]);
-        }
-
-    };
-    private final static long serialVersionUID = -3792911698130841281L;
     @SerializedName("ip")
     @Expose
     private String ip;
@@ -112,6 +96,22 @@ public class ApiGeo implements Serializable, Parcelable {
     @SerializedName("completed_requests")
     @Expose
     private Long completedRequests;
+    public final static Creator<ApiGeo> CREATOR = new Creator<ApiGeo>() {
+
+
+        @SuppressWarnings({
+                "unchecked"
+        })
+        public ApiGeo createFromParcel(android.os.Parcel in) {
+            return new ApiGeo(in);
+        }
+
+        public ApiGeo[] newArray(int size) {
+            return (new ApiGeo[size]);
+        }
+
+    };
+    private final static long serialVersionUID = -3792911698130841281L;
 
     protected ApiGeo(android.os.Parcel in) {
         this.ip = ((String) in.readValue((String.class.getClassLoader())));
@@ -147,11 +147,13 @@ public class ApiGeo implements Serializable, Parcelable {
 
     /**
      * No args constructor for use in serialization
+     *
      */
     public ApiGeo() {
     }
 
     /**
+     *
      * @param continent
      * @param country
      * @param city

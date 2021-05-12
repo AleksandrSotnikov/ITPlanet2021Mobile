@@ -1,3 +1,4 @@
+
 package avastudio.example.newstime.api;
 
 import com.google.gson.annotations.Expose;
@@ -49,11 +50,13 @@ public class ApiWeather {
 
     /**
      * No args constructor for use in serialization
+     *
      */
     public ApiWeather() {
     }
 
     /**
+     *
      * @param visibility
      * @param timezone
      * @param main
